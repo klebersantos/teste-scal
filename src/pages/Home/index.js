@@ -27,11 +27,10 @@ function Home() {
 
   useEffect(() => {
     const fetchLatestNews = async () => {
-      const { data } = await api.get("/latest-news", {
-        params: {
-          language: "en",
-        },
-      });
+      const { data } = await api.get("", {});
+
+      console.log(data);
+
       handleLatestNews(data.news);
     };
     fetchLatestNews();
@@ -48,12 +47,15 @@ function Home() {
                   <div className="destaque item" key={news.id}>
                     <div className="d-flex">
                       {news.category.map((category) => (
-                        <Link to="" className={`${category} tag-category mr-2`}>
+                        <Link
+                          to={news.url}
+                          className={`${category} tag-category mr-2`}
+                        >
                           {category}
                         </Link>
                       ))}
                     </div>
-                    <Link to="" className="imagem-box">
+                    <Link to={news.url} className="imagem-box">
                       <img
                         src={news.image === "None" ? Obama : news.image}
                         alt={news.title}
@@ -61,10 +63,10 @@ function Home() {
                       <div className="botao">Read More</div>
                     </Link>
                     <h1>
-                      <Link to="">{news.title}</Link>
+                      <Link to={news.url}>{news.title}</Link>
                     </h1>
                     <div className="autor">
-                      <Link to="">
+                      <Link to={news.url}>
                         <img src={Obama} alt={news.author || "Admin"} />
                       </Link>
                       <p>{news.author || "Admin"}</p>
@@ -77,12 +79,15 @@ function Home() {
                 <div className="item" key={news.id}>
                   <div className="d-flex">
                     {news.category.map((category) => (
-                      <Link to="" className={`${category} tag-category mr-2`}>
+                      <Link
+                        to={news.url}
+                        className={`${category} tag-category mr-2`}
+                      >
                         {category}
                       </Link>
                     ))}
                   </div>
-                  <Link to="" className="imagem-box">
+                  <Link to={news.url} className="imagem-box">
                     <img
                       src={news.image === "None" ? Obama : news.image}
                       alt={news.title}
@@ -90,10 +95,10 @@ function Home() {
                     <div className="botao">Read More</div>
                   </Link>
                   <h1>
-                    <Link to="">{news.title}</Link>
+                    <Link to={news.url}>{news.title}</Link>
                   </h1>
                   <div className="autor">
-                    <Link to="">
+                    <Link to={news.url}>
                       <img src={Obama} alt={news.author || "Admin"} />
                     </Link>
                     <p>{news.author || "Admin"}</p>
@@ -112,16 +117,19 @@ function Home() {
               <div className="item" key={news.id}>
                 <div className="d-flex">
                   {news.category.map((category) => (
-                    <Link to="" className={`${category} tag-category mr-2`}>
+                    <Link
+                      to={news.url}
+                      className={`${category} tag-category mr-2`}
+                    >
                       {category}
                     </Link>
                   ))}
                 </div>
                 <h1>
-                  <Link to="">{news.title}</Link>
+                  <Link to={news.url}>{news.title}</Link>
                 </h1>
                 <div className="autor">
-                  <Link to="">
+                  <Link to={news.url}>
                     <img src={Obama} alt={news.author || "Admin"} />
                   </Link>
                   <p>{news.author || "Admin"}</p>

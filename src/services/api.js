@@ -1,10 +1,11 @@
 import axios from "axios";
+import "./latest-news.json";
 
 const api = axios.create({
-  baseURL: "https://api.currentsapi.services/v1",
-  params: {
-    apiKey: "hkSv92Kb9SJjv_SPszxGK4X9XJxuGq9x0ayIoaIoSqJMbu-8",
-  },
+  baseURL: "https://localhost:3000/latest-news.json",
+  // params: {
+  //   apiKey: "wICFvhP1ZoJdxut30GUforBJJCGlA651CsLdXpWTtRYAVDbB",
+  // },
 });
 
 export default api;
