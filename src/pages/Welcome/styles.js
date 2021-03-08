@@ -29,56 +29,6 @@ export const CenterBox = styled.div`
       display: block !important;
     }
   }
-  .buttonDefault {
-    font-size: 16px;
-    text-transform: uppercase;
-    padding: 3px 20px;
-    border: 1px solid #000;
-    border-radius: 25px;
-    color: #000;
-    font-weight: 500;
-    text-align: center;
-    transition: 0.3s;
-    display: inline-block;
-    @media (max-width: 992px) {
-      margin: 20px auto;
-      width: 120px;
-      display: block;
-    }
-    &.red {
-      color: #d0021b;
-      border-color: #d0021b;
-    }
-    &.blue {
-      color: #1973da;
-      border-color: #1973da;
-    }
-    &.purple {
-      color: #bd10e0;
-      border-color: #bd10e0;
-    }
-    &.green {
-      color: #7cbb37;
-      border-color: #7cbb37;
-    }
-    &.yellow {
-      color: #f5a623;
-      border-color: #f5a623;
-    }
-    &:hover {
-      border-color: #1973da;
-      color: #1973da;
-      text-decoration: none;
-    }
-  }
-  .bth {
-    text-align: center;
-    margin: 0 auto;
-    display: block;
-    text-transform: uppercase;
-    font-size: 20px;
-    width: 150px;
-  }
 `;
 
 export const Save = styled.button`

@@ -17,13 +17,15 @@
     max-width: 100%;
     transform: scale(1);
     transition: 0.3s;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .grid .imagem-box {
     overflow: hidden;
     position: relative;
-    height: auto;
-
+    height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -107,7 +109,8 @@
 }
 
 .grid .destaque a.imagem-box {
-    height: auto;
+    height: 350px;
+    width: 100%;
 }
 
 .grid .destaque .autor a {
@@ -156,6 +159,10 @@
 
     .grid .destaque img {
         max-width: inherit;
+        width: 100%;
+    }
+    .grid .destaque a.imagem-box {
+        height: auto;
         width: 100%;
     }
 }

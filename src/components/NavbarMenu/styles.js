@@ -31,6 +31,7 @@ export const Header = styled.header`
     .navbar-toggler {
       position: absolute;
       left: 0;
+      top: 20px;
     }
     .navbar-brand {
       margin: 0 auto;

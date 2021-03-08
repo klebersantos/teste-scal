@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import "./style.css";
 import api from "../../services/api";
@@ -9,29 +8,21 @@ import Obama from "../../assets/obama.png";
 function Home() {
   const [primaryNews, setPrimaryNews] = useState([]);
   const [secondaryNews, setSecondaryNews] = useState([]);
-  const whitelist = ["politics", "business", "tech", "science", "sports"];
-
-  const filterNews = (data) =>
-    data.reduce((acc, value, index) => {
-      if (whitelist.some((category) => value.category.includes(category))) {
-        return [value, ...acc];
-      }
-      return [...acc, value];
-    }, []);
 
   const handleLatestNews = (data) => {
-    const filteredNews = filterNews(data);
-    setPrimaryNews(filteredNews.slice(0, 3));
-    setSecondaryNews(filteredNews.slice(3, 6));
+    setPrimaryNews(data.slice(0, 3));
+    setSecondaryNews(data.slice(3, 6));
   };
 
   useEffect(() => {
     const fetchLatestNews = async () => {
-      const { data } = await api.get("", {});
-
-      console.log(data);
-
+      const { data } = await api.get("/latest-news.json", {
+        params: {
+          language: "en",
+        },
+      });
       handleLatestNews(data.news);
+      console.log(data.news);
     };
     fetchLatestNews();
   }, []);
@@ -47,28 +38,38 @@ function Home() {
                   <div className="destaque item" key={news.id}>
                     <div className="d-flex">
                       {news.category.map((category) => (
-                        <Link
-                          to={news.url}
+                        <a
+                          key={news.id}
+                          href={news.url}
+                          rel="noreferrer"
                           className={`${category} tag-category mr-2`}
+                          target="_blank"
                         >
                           {category}
-                        </Link>
+                        </a>
                       ))}
                     </div>
-                    <Link to={news.url} className="imagem-box">
+                    <a
+                      target="_blank"
+                      href={news.url}
+                      rel="noreferrer"
+                      className="imagem-box"
+                    >
                       <img
                         src={news.image === "None" ? Obama : news.image}
                         alt={news.title}
                       />
                       <div className="botao">Read More</div>
-                    </Link>
+                    </a>
                     <h1>
-                      <Link to={news.url}>{news.title}</Link>
+                      <a target={"_blank"} rel="noreferrer" href={news.url}>
+                        {news.title}
+                      </a>
                     </h1>
                     <div className="autor">
-                      <Link to={news.url}>
+                      <a target={"_blank"} rel="noreferrer" href={news.url}>
                         <img src={Obama} alt={news.author || "Admin"} />
-                      </Link>
+                      </a>
                       <p>{news.author || "Admin"}</p>
                     </div>
                   </div>
@@ -77,30 +78,40 @@ function Home() {
 
               return (
                 <div className="item" key={news.id}>
-                  <div className="d-flex">
+                  <div className={`${index} d-flex`}>
                     {news.category.map((category) => (
-                      <Link
-                        to={news.url}
+                      <a
+                        key={news.id}
+                        target="_blank"
+                        rel="noreferrer"
+                        href={news.url}
                         className={`${category} tag-category mr-2`}
                       >
                         {category}
-                      </Link>
+                      </a>
                     ))}
                   </div>
-                  <Link to={news.url} className="imagem-box">
+                  <a
+                    target={"_blank"}
+                    rel="noreferrer"
+                    href={news.url}
+                    className="imagem-box"
+                  >
                     <img
                       src={news.image === "None" ? Obama : news.image}
                       alt={news.title}
                     />
                     <div className="botao">Read More</div>
-                  </Link>
+                  </a>
                   <h1>
-                    <Link to={news.url}>{news.title}</Link>
+                    <a target="_blank" rel="noreferrer" href={news.url}>
+                      {news.title}
+                    </a>
                   </h1>
                   <div className="autor">
-                    <Link to={news.url}>
+                    <a target="_blank" rel="noreferrer" href={news.url}>
                       <img src={Obama} alt={news.author || "Admin"} />
-                    </Link>
+                    </a>
                     <p>{news.author || "Admin"}</p>
                   </div>
 
@@ -117,21 +128,26 @@ function Home() {
               <div className="item" key={news.id}>
                 <div className="d-flex">
                   {news.category.map((category) => (
-                    <Link
-                      to={news.url}
+                    <a
+                      key={news.id}
+                      target="_blank"
+                      rel="noreferrer"
+                      href={news.url}
                       className={`${category} tag-category mr-2`}
                     >
                       {category}
-                    </Link>
+                    </a>
                   ))}
                 </div>
                 <h1>
-                  <Link to={news.url}>{news.title}</Link>
+                  <a target="_blank" rel="noreferrer" href={news.url}>
+                    {news.title}
+                  </a>
                 </h1>
                 <div className="autor">
-                  <Link to={news.url}>
+                  <a target="_blank" rel="noreferrer" href={news.url}>
                     <img src={Obama} alt={news.author || "Admin"} />
-                  </Link>
+                  </a>
                   <p>{news.author || "Admin"}</p>
                 </div>
                 <div className="mt-3 resumo-conteudo">
